@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- Meta, title, CSS, favicons, etc. -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>SKAI</title>
+
+        <link rel="shortcut icon" href="/static/images/SKAI.png" />
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+        <!-- Bootstrap -->
+        <link href="/static/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Font Awesome -->
+        <link href="/static/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <!-- NProgress -->
+        <link href="/static/vendors/nprogress/nprogress.css" rel="stylesheet">
+        <!-- Custom Theme Style -->
+        <link href="/static/styles/custom.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/static/styles/mainStyle.css">
+
+        <link type="text/css" rel="stylesheet" href="/static/vendors/visjs/dist/vis-network.min.css">
+
+        <script type="text/javascript" src="/static/vendors/visjs/dist/vis.js"></script>
+        <script id="dataScript" type="text/javascript" src="/static/vendors/visjs/datasource/{{topic}}.js"></script>
+        <script type="text/javascript" src="/static/vendors/visjs/dist/options.js"></script>
+
+        <style type="text/css">
+        #mynetwork {
+          
+          background: white;
+          width: 800px;
+          height: 800px;
+        }
+      </style>
+        
+    </head>
+
+    <body >
+
+    <div style="display: none" id="topic_hidden_div">{{topic}}</div>
+
+    <div class="container body">
+      <div class="main_container">
+
+        <!-- page content -->
+        <div role="main">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Topic Information</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content" style="padding: 0"> 
+                  <!-- main page -->
+                    <div class="row">
+                      <!-- main content -->
+                      <div class="col-md-9 col-sm-9 col-xs-9">
+
+                        <!-- graph div -->
+                        <div class="x_panel" style="padding: 0">
+                          <div class="x_content ">
+                            <div id="mynetwork"></div>
+                          </div>
+                        </div>
+                        <!-- graph div -->
+                        
+                      </div>
+
+                      <div class="col-md-3 col-sm-3 col-xs-3">
+                        
+                        <div class="row">
+                          <!-- options panel -->
+                        <div class="profile_title">
+                              <div class="col-md-12">
+                                  <h2>Graph Options</h2>
+                              <div class="clearfix"></div>
+                              </div>
+                          </div>
+                        <div class="x_panel">
+                          <div class="x_content">
+      
+                            <form class="form-horizontal form-label-left">
+
+                              <div class="form-group">
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                  <div class="checkbox" style="font-size: 14px;">
+                                    <label>
+                                      <input type="checkbox" checked="checked" id="showPeople"  onclick="updateOptions();"> Show Employees
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" checked="checked" id="showTopics" onclick="updateOptions();"> Show Topics
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" id="showExperts" onclick="updateOptions()"> Show Only Experts
+                                    </label>
+                                  </div>
+
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" id="showClients" onclick="updateOptions()"> Show Clients
+                                    </label>
+                                  </div>
+
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" id="showOrgs" onclick="updateOptions()"> Show Organizations
+                                    </label>
+                                  </div>
+
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" id="showPlaces" onclick="updateOptions()"> Show Places
+                                    </label>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                        <!-- options panel -->
+                        </div>
+
+                        <div class="row">
+                          <!-- options panel -->
+                        <div class="profile_title">
+                              <div class="col-md-12">
+                                  <h2>Graph Legend</h2>
+                              <div class="clearfix"></div>
+                              </div>
+                          </div>
+                        <div class="x_panel" >
+                          <div class="x_content" style="padding-left: 15px">
+                            <table class="" style="width:100%">
+                              <tr>
+                                <td>
+                                  <table class="tile_info">
+                                    <tr>
+                                      <td>
+                                        <i class="fa fa-square blue"></i>Main Topic 
+                                      </td>
+                                    </tr>
+
+                                    <tr>
+                                      <td>
+                                        <p><i class="fa fa-square yellow"></i>Employees </p>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <p><i class="fa fa-square green"></i>Topics </p>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <p><i class="fa fa-square red"></i>Clients </p>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <p><i class="fa fa-square magenta"></i>Organizations </p>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <p><i class="fa fa-square orange"></i>Places </p>
+                                      </td>
+                                    </tr>
+                                  </table>
+                                </td>
+                              </tr>
+                            </table>
+                          </div>
+                        </div>
+                        <!-- options panel -->
+                        </div>
+                        
+                      </div>
+                      <!-- main content -->
+                    </div>
+                    <!-- main page -->
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <!-- /page content -->
+      </div>
+    </div>
+
+    <!-- Bootstrap -->
+    <script src="/static/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="/static/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="/static/vendors/nprogress/nprogress.js"></script>
+    <!-- jQuery Sparklines -->
+    <script src="/static/vendors/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+    <!-- morris.js -->
+    <script src="/static/vendors/raphael/raphael.min.js"></script>
+    <script src="/static/vendors/morris.js/morris.min.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="/static/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="/static/scripts/custom.min.js"></script>
+
+
+
+  </body>
+
+</html>

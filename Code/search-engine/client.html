@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- Meta, title, CSS, favicons, etc. -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>SKAI</title>
+
+        <link rel="shortcut icon" href="/static/images/SKAI.png" />
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+        <!-- Bootstrap -->
+        <link href="/static/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Font Awesome -->
+        <link href="/static/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <!-- NProgress -->
+        <link href="/static/vendors/nprogress/nprogress.css" rel="stylesheet">
+        
+        <!-- Custom Theme Style -->
+        <link href="/static/styles/custom.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/static/styles/mainStyle.css">
+
+        <link type="text/css" rel="stylesheet" href="/static/vendors/visjs/dist/vis-network.min.css">
+
+        <script type="text/javascript" src="/static/vendors/visjs/dist/vis.js"></script>
+        <script id="dataScript" type="text/javascript" src="/static/vendors/visjs/datasource/{{name}}.js"></script>       
+
+        <style type="text/css">
+        #mynetwork {
+          
+          background: white;
+          width: 600px;
+          height: 400px;
+        }
+      </style>
+    </head>
+
+    <body >
+
+    <div class="container body">
+      <div class="main_container">
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Organization Information</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                  <!-- main page -->
+                    <div class="row">
+                      <!-- user info -->
+                      <div class="col-md-3 col-sm-3 col-xs-12 profile_left" style="text-align: justify;text-justify: inter-word; padding-right: 5%;">
+                        <div class="profile_img">
+                          <div id="crop-avatar">
+                            %if logo:
+                              <img class="img-responsive avatar-view" style="width: 100%" src={{logo}} alt="Avatar" title="Change the avatar">
+                            %else:
+                              <img class="img-responsive avatar-view" style="width: 100%" src="/static/images/org.png" alt="Avatar" title="Change the avatar">
+                            %end
+                            
+                          </div>
+                        </div>
+                        <h4>{{name}}</h4>
+
+                        <ul class="list-unstyled user_data">
+                          <li>
+                            <i class="fa fa-building user-profile-icon"></i> {{orgType}}
+                          </li>
+                          <li>
+                            <i class="fa fa-external-link user-profile-icon"></i> <a href="{{link}}">{{link}}</a>
+
+                          </li>
+
+                          <li>
+                            <i class="fa fa-info-circle user-profile-icon" ></i> {{description}}
+                          </li>
+
+                        </ul>
+                        <br />
+                      </div>
+                      <!-- user info -->
+                      <!-- main content -->
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <!-- bar chart -->
+                        <div class="row">
+                          <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel custom_panel">
+                              <div class="profile_title">
+                                <div class="col-md-12">
+                                  <h2>Related Entities</h2>
+                                </div>
+                              </div>
+                              <div class="x_content">
+
+                                <div class="row">
+                                  <div class="col-md-9 col-sm-9 col-xs-9">
+                                    <div class="x_panel">
+                                      <div class="x_content" >
+                                        <div id="mynetwork"></div>
+                                      </div>
+                                    </div>
+                                  
+                                  </div>
+                                  <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <div class="x_panel" >
+                                      <div class="x_content" style="padding-left: 15px">
+                                        <table class="" style="width:100%">
+                                          <tr>
+                                            <td>
+                                              <table class="tile_info">
+                                                <tr>
+                                                  <td>
+                                                    <i class="fa fa-square blue"></i>Organization 
+                                                  </td>
+                                                </tr>
+
+                                                <tr>
+                                                  <td>
+                                                    <p><i class="fa fa-square yellow"></i>Employees </p>
+                                                  </td>
+                                                </tr>
+                                                <tr>
+                                                  <td>
+                                                    <p><i class="fa fa-square green"></i>Similar Topics </p>
+                                                  </td>
+                                                </tr>
+                                                <tr>
+                                                  <td>
+                                                    <p><i class="fa fa-square red"></i>Clients </p>
+                                                  </td>
+                                                </tr>
+                                                <tr>
+                                                  <td>
+                                                    <p><i class="fa fa-square orange"></i>Places </p>
+                                                  </td>
+                                                </tr>
+                                              </table>
+                                            </td>
+                                          </tr>
+                                        </table>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                          
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- bar chart -->
+                        <!-- top pepople -->
+                        <div class="row">
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="x_panel custom_panel">
+                              <div class="profile_title">
+                                <div class="col-md-12">
+                                  <h2>Top collaborators from Enron</h2>
+                                </div>
+                              </div>
+                              <div class="x_content">
+                                %for i, val in enumerate(top_from_enron):
+                                  <article class="media event">
+                                  <a class="pull-left date">
+                                    {{i+1}}
+                                  </a>
+                                  
+                                  <div class="media-body">
+                                    %person_name= val.split()
+                                    %person_name='+'.join(person_name)
+                                    <a href="/profile/{{person_name}}">{{val}}</a>
+                                  </div>
+                                </article>
+                                %end
+                                
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="x_panel custom_panel">
+                              <div class="profile_title">
+                                <div class="col-md-12">
+                                  <h2>Top collaborators from {{name}}</h2>
+                                </div>
+                              </div>
+                              <div class="x_content">
+                                %for i, val in enumerate(top_from_company):
+                                  <article class="media event">
+                                  <a class="pull-left date">
+                                    {{i+1}}
+                                  </a>
+                                  <div class="media-body">
+                                    %person_name= val.split()
+                                    %person_name='+'.join(person_name)
+                                    <a href="/profile/{{person_name}}">{{val}}</a>
+                                  </div>
+                                </article>
+                                %end
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- top people -->
+                        <!-- user interests -->
+                        <div class="row">
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="profile_title">
+                              <div class="col-md-6">
+                                  <h2>Client Interest</h2>
+                              <div class="clearfix"></div>
+                              </div>
+                            </div>
+                            <div class="x_panel custom_panel">
+                              <div class="x_content">
+                                  <ul class="list-unstyled user_data">
+                                          %for k,v in  sorted(interests.iteritems()):
+                                          <li>
+                                            <p>{{k}}</p>
+                                            <div class="progress progress_sm">
+                                              <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="{{v*100}}"></div>
+                                            </div>
+                                          </li>
+                                        %end 
+                                      </ul>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- user interests -->
+                      </div>
+                      <!-- main content -->
+                    </div>
+                    <!-- main page -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
+      </div>
+    </div>
+    <script type="text/javascript">
+          
+
+      var network;
+
+      function redrawAll() {
+        var container = document.getElementById('mynetwork');
+        var width = 600;
+        var height = 400;
+
+        var options = {
+          width: width + 'px',
+          height: height + 'px',
+          nodes: {
+            shape: 'dot',
+            scaling: {
+              min: 10,
+              max: 40
+            },
+            font: {
+              size: 12,
+              face: 'Tahoma'
+            }
+          },
+          edges: {
+            color:{inherit:true},
+            width: 0.15,
+            smooth: {
+             // type: 'continuous'
+             type: 'horizontal'
+            }
+          },
+          groups: {
+                1: {color: { border: "#2B7CE9", background: "#97C2FC", highlight: { border: "#2B7CE9", background: "#D2E5FF" }, hover: { border: "#2B7CE9", background: "#D2E5FF" } }}, // 0: blue
+                2: {color: { border: "#FFA500", background: "#FFFF00", highlight: { border: "#FFA500", background: "#FFFFA3" }, hover: { border: "#FFA500", background: "#FFFFA3" } }},
+                3: {color: { border: "#FA0A10", background: "#FB7E81", highlight: { border: "#FA0A10", background: "#FFAFB1" }, hover: { border: "#FA0A10", background: "#FFAFB1" } }}, // 2: red
+                4: {color: { border: "#41A906", background: "#7BE141", highlight: { border: "#41A906", background: "#A1EC76" }, hover: { border: "#41A906", background: "#A1EC76" } }}, // 3: green
+                5: {color: { border: "#E129F0", background: "#EB7DF4", highlight: { border: "#E129F0", background: "#F0B3F5" }, hover: { border: "#E129F0", background: "#F0B3F5" } }}, // 4: magenta
+                6: {color: { border: "#C37F00", background: "#FFA807", highlight: { border: "#C37F00", background: "#FFCA66" }, hover: { border: "#C37F00", background: "#FFCA66" } }}, // 6: orange
+                7: {color: { border: "#7C29F0", background: "#AD85E4", highlight: { border: "#7C29F0", background: "#D3BDF0" }, hover: { border: "#7C29F0", background: "#D3BDF0" } }}, // 5: purple
+            },
+          physics: false,
+          interaction: {
+            hideEdgesOnDrag: true,
+            tooltipDelay: 200
+          },
+          physics: false
+        };
+
+        var data = {nodes:nodes, edges:edges};
+        network = new vis.Network(container, data, options);
+        network.moveTo({
+        position: {x: 0, y: 0},
+        offset: {x: -width/2, y: -height/2},
+        scale: 1,
+    })
+
+      }
+
+    redrawAll();
+
+
+        </script>
+
+    <!-- Bootstrap -->
+    <script src="/static/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="/static/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="/static/vendors/nprogress/nprogress.js"></script>
+    <!-- morris.js -->
+    <script src="/static/vendors/raphael/raphael.min.js"></script>
+    <script src="/static/vendors/morris.js/morris.min.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="/static/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="/static/vendors/moment/min/moment.min.js"></script>
+    <script src="/static/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- Chart.js -->
+    <script src="/static/vendors/Chart.js/dist/Chart.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="/static/scripts/custom.min.js"></script>
+
+
+
+  </body>
+
+</html>

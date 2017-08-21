@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+  <title>Network | Clustering</title>
+
+  <script type="text/javascript" src="static/vendors/visjs/datasource/big_topic_cluster.js"></script>
+  <script type="text/javascript" src="static/vendors/visjs/dist/vis.js"></script>
+  <link href="static/vendors/visjs/dist/vis-network.min.css" rel="stylesheet" type="text/css" />
+
+  <style type="text/css">
+        #mynetwork {
+            width: 900px;
+            height: 900px;
+            border: 1px solid lightgray;
+        }
+    </style>
+  
+</head>
+
+<body>
+
+<input type="button" onclick="clusterByCid()" value="Cluster all nodes with CID = 1"> <br />
+<input type="button" onclick="clusterAll()" value="Cluster all the topics"> <br />
+
+<div id="mynetwork"></div>
+
+<script type="text/javascript">
+  // create a network
+  var container = document.getElementById('mynetwork');
+  var data = {
+    nodes: nodes,
+    edges: edges
+  };
+  var options = {
+    layout:{randomSeed:8},
+    nodes: {
+        shape: 'dot',
+        scaling: {
+          min: 5,
+          max: 20
+        }
+      },
+  };
+  var network = new vis.Network(container, data, options);
+
+  network.on("selectNode", function(params) {
+      if (params.nodes.length == 1) {
+          if (network.isCluster(params.nodes[0]) == true) {
+              network.openCluster(params.nodes[0]);
+          }
+          else{
+            selected_node = nodes[params.nodes[0]-1]
+            if (selected_node.value == 20) {
+              clusterByTopic(selected_node);
+        
+            }
+          }
+      }
+  });
+
+  function clusterByCid() {
+      network.setData(data);
+      var clusterOptionsByData = {
+          joinCondition:function(childOptions) {
+              return childOptions.cid == 1;
+          },
+          clusterNodeProperties: {id:'Oil', borderWidth:3, shape:'dot '}
+      };
+      network.cluster(clusterOptionsByData);
+  }
+
+  function clusterByTopic(topic_node) {
+      network.setData(data);
+      var clusterOptionsByData = {
+          joinCondition:function(childOptions) {
+              return childOptions.group == topic_node.group;
+          },
+          clusterNodeProperties: {id:topic_node.label, borderWidth:3, shape:'dot '}
+      };
+      network.cluster(clusterOptionsByData);
+  }
+
+  function clusterAll() {
+      network.setData(data);
+      for (i = 0; i < nodes.length; i++) {
+        node = nodes[i];
+        if (node.value == 20)
+        {
+          clusterByTopic(node);
+        }
+      }
+  }
+  
+
+</script>
+
+</body>
+</html>

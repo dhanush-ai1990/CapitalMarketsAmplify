@@ -1,0 +1,20 @@
+{
+  "name": "search-engine",
+  "authors": [
+    "Sahba-e <Sahba.ezami@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "aos": "^2.2.0"
+  }
+}

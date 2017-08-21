@@ -1,0 +1,84 @@
+digraph network { 
+	rankdir=TB;
+	node [shape=circle, style=filled]
+	edge [minlen=2]
+	
+	/* Nodes */
+	"s9" [color=""]
+	"C" [color=""]
+	"s8" [color=""]
+	"E" [color=""]
+	"D" [color=""]
+	"G" [color=""]
+	"F" [color=""]
+	"s3" [color=""]
+	"H" [color=""]
+	"s1" [color=""]
+	"s10" [color=""]
+	"s7" [color=""]
+	"s6" [color=""]
+	"s5" [color=""]
+	"s4" [color=""]
+	"s13" [color=""]
+	"s12" [color=""]
+	"s2" [color=""]
+	"s14" [color=""]
+	"s11" [color=""]
+	
+	
+	/* Edges */
+	"s9" -> "s7" [label="1.32703633967"]
+	"C" -> "E" [label="2"]
+	"C" -> "D" [label="3"]
+	"s8" -> "s7" [label="1.70475434684"]
+	"E" -> "D" [label="1"]
+	"E" -> "G" [label="3"]
+	"E" -> "F" [label="2"]
+	"D" -> "F" [label="4"]
+	"G" -> "H" [label="2"]
+	"F" -> "H" [label="1"]
+	"F" -> "G" [label="2"]
+	"s3" -> "s4" [label="1.72481490561"]
+	"s1" -> "s2" [label="1.44326855983"]
+	"s10" -> "s7" [label="1.32703633967"]
+	"s7" -> "s9" [label="1.32703633967"]
+	"s7" -> "s8" [label="1.70475434684"]
+	"s7" -> "s13" [label="1.32703633967"]
+	"s7" -> "s12" [label="1.32703633967"]
+	"s7" -> "s11" [label="1.32703633967"]
+	"s7" -> "s10" [label="1.32703633967"]
+	"s7" -> "s6" [label="1.65449570001"]
+	"s7" -> "s14" [label="1.70681557029"]
+	"s6" -> "s7" [label="1.65449570001"]
+	"s6" -> "s5" [label="0.918518134792"]
+	"s5" -> "s6" [label="0.918518134792"]
+	"s4" -> "s3" [label="1.72481490561"]
+	"s13" -> "s7" [label="1.32703633967"]
+	"s12" -> "s7" [label="1.32703633967"]
+	"s2" -> "s1" [label="1.44326855983"]
+	"s14" -> "s7" [label="1.70681557029"]
+	"s11" -> "s7" [label="1.32703633967"]
+	
+	
+	/* Nodes that have the same rank. */
+	
+	
+	"s5" [rank="source"]
+	"s7" [rank="sink"]
+	// Source Node
+	// Sink Node
+	
+	/* Legend */
+	subgraph legend {
+		rankdir=TB;
+		rank="same";
+		
+		"legend1" [shape=none, fillcolor="white", fontname="monospace", fontcolor="white", label=<
+			<TABLE BORDER="0">
+				<TR><TD>                    </TD></TR>
+				<TR><TD>                    </TD></TR>
+				<TR><TD>                    </TD></TR>
+				<TR><TD>                    </TD></TR>
+			</TABLE>>]
+	}
+}
