@@ -18,17 +18,7 @@ def push_2_values(value1, value2, column_name, table_name):
 	Inserts 2 values into 1 slot in the db.
 	"""
 	c.execute("INSERT INTO {tn} ({cn}) VALUES ({v1}, {v2})".format(tn=table_name, cn=column_name, v1=value1, v2 = value2))
-
-
-def ughhh(rows, column_name, table_name):
-	"""
-	This gorram son of a bitch is supposed to work.
-	"""
-
-	rows = [('2006-03-28', 'BUY', 'IBM', 1000, 45.00),
-	        ('2006-04-05', 'BUY', 'MSOFT', 1000, 72.00),
-	        ('2006-04-06', 'SELL', 'IBM', 500, 53.00)]
-	c.executemany("INSERT INTO {tn} ({cn}) VALUES (?,?,?,?,?)", rows)  # NOPE
+	
 
 if __name__ == "__main__":
 
@@ -79,61 +69,21 @@ if __name__ == "__main__":
 	# Add person 1
 	cc = 1
 	for thing in p1:
-		print (thing)
 		t = thing.split()
-		print (t[0])
-		print (t[1])
-		print (type(thing))
 		value = thing
 		push_file(thing, PERSON1, table_name)
 		print ("PERSON1 ... inserting row #: ", cc) 
-		raise Exception('STOP')
-
 		cc += 1
 
 	# Add person 2
 	cc = 1
 	for thing in p2:
 		value = thing
-		raise Exception('STOP')
 		push_file(value, PERSON2, table_name)
 		print ("PERSON2 ... inserting row #: ", cc) 
 		cc += 1
 
 	conn.commit()
 	conn.close()
-
-
-
-
-"""
-          _____                    _____                    _____          
-         /\    \                  /\    \                  /\    \         
-        /::\    \                /::\    \                /::\    \        
-       /::::\    \              /::::\    \              /::::\    \       
-      /::::::\    \            /::::::\    \            /::::::\    \      
-     /:::/\:::\    \          /:::/\:::\    \          /:::/\:::\    \     
-    /:::/__\:::\    \        /:::/  \:::\    \        /:::/__\:::\    \    
-   /::::\   \:::\    \      /:::/    \:::\    \      /::::\   \:::\    \   
-  /::::::\   \:::\    \    /:::/    / \:::\    \    /::::::\   \:::\    \  
- /:::/\:::\   \:::\    \  /:::/    /   \:::\ ___\  /:::/\:::\   \:::\    \ 
-/:::/  \:::\   \:::\____\/:::/____/     \:::|    |/:::/  \:::\   \:::\____\
-\::/    \:::\  /:::/    /\:::\    \     /:::|____|\::/    \:::\  /:::/    /
- \/____/ \:::\/:::/    /  \:::\    \   /:::/    /  \/____/ \:::\/:::/    / 
-          \::::::/    /    \:::\    \ /:::/    /            \::::::/    /  
-           \::::/    /      \:::\    /:::/    /              \::::/    /   
-           /:::/    /        \:::\  /:::/    /               /:::/    /    
-          /:::/    /          \:::\/:::/    /               /:::/    /     
-         /:::/    /            \::::::/    /               /:::/    /      
-        /:::/    /              \::::/    /               /:::/    /       
-        \::/    /                \::/____/                \::/    /        
-         \/____/                  ~~                       \/____/         
-                                                                           
-"""
-
-
-
-
-
 
 

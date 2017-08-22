@@ -1,7 +1,7 @@
 import sqlite3
 import nltk
 import pickle
-file_out = '/Users/AdaEne/Documents/Entity Recognition/'
+file_out = '/Users/usr/Documents/Entity Recognition/'
 Database = sqlite3.connect(file_out+'Enron_database.db')
 c = Database.cursor()
 
@@ -42,7 +42,7 @@ def average_num_chars():
   corrected_text ={}
   all_words = []
 
-  dir1 ='/Users/AdaEne/Documents/Entity\ Recognition'
+  dir1 ='/Users/usr/Documents/Entity\ Recognition'
   all_chars = []
   num_sentences = []
   temp = [117506,2207,121182]
@@ -161,7 +161,7 @@ if __name__ == "__main__":
   #print split_emails
   with open('myPickles','w') as f:
     pickle.dump(split_emails,f)
-  #pickles = pickle.load(open('myPickles', 'rb'))
+  # pickles = pickle.load(open('myPickles', 'rb'))
   # These fuckers: 117506, 2207, 121182, ...
   # average number of sentences: 7.35443748406
   # average number of characters: 1204.7757873

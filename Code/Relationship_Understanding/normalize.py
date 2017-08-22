@@ -59,7 +59,7 @@ if __name__ == "__main__":
 	V = normalize_sentiment([1., -1., .8])
 	print (V)
 	print (len(V))
-	#print (normalize_num_exchanges([1,2,3,4,5,6,7,3,2]))
+	
 
 
 

@@ -5,7 +5,7 @@ from dijktras_algorithm import *
 from sklearn.externals import joblib
 
 
-file_out = '/Users/AdaEne/Documents/Entity Recognition/'
+file_out = '/Users/usr/Documents/Entity Recognition/'
 Database = sqlite3.connect(file_out + 'Enron_database.db')
 c = Database.cursor()
 SQL = "select distinct(msgid), raw_body from `Enron Prime`"

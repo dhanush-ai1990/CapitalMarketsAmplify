@@ -69,7 +69,6 @@ def main():
     
     # Get the painting object and set its properties.
     paint = G.painter()
-    #paint.set_source_sink('ada', 'bob')
     paint.set_source_sink('s5', 's7')
     
     # load the graph dictionary
@@ -85,17 +84,6 @@ def main():
         load = float(edge['load'])
         G.add_edge(source, target, load)
         G.add_edge(target, source, load)
-
-    #G.add_edge('ada', 'sue', 3)
-    #G.add_edge('ada', 'john', 2)
-    #G.add_edge('sue', 'bob', 1)
-    #G.add_edge('a', 'b', 1)
-    #G.add_edge('sue', 'john', 1)
-    #G.add_edge('john', 'bob', 1)
-
-    # Generate the graph using the painter we configured.
-    G.export(False, paint)
-    joblib.dump(G, 'graph.pkl')
     
     # Get 5 shortest paths from the graph.
     items = algorithms.ksp_yen(G, 's5', 's7', 5)

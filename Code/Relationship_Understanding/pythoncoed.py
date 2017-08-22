@@ -134,7 +134,7 @@ def clean(text):
 	return text
 nlp = spacy.load('en')
 
-file_out = '/Users/Dhanush/desktop/EnronDataSetAnalysis/Enron_Database/Enron_Text/'
+file_out = '/Users/usr/desktop/EnronDataSetAnalysis/Enron_Database/Enron_Text/'
 Database = sqlite3.connect('Enron_database.db')
 c = Database.cursor()
 
@@ -201,7 +201,6 @@ for data in c:
 		if  (ent.label_ == 'GPE'):
 			temp_place.append(ent.text)
 
-
 	for sentence in nltk.sent_tokenize(clean(data[1])) :
 		parsed = parser(sentence)
 
@@ -209,12 +208,7 @@ for data in c:
 			if (token.tag_ == "NNP") or (token.tag_ == "NNPS") :
 				all_nouns.append(token.text)
 	
-		#print np.text
-					
-	#output.write(msgid+'\n')
-	#output.write(subject+'\n')
-	#output.write(body+'\n')
-	#file_number +=1
+			    
 	count+=1
 
 

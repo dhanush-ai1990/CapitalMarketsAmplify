@@ -87,7 +87,6 @@ def pair_sender_receiver(msgID_sender_receiver, sorted_dictionary_of_stuff, dict
 	joblib.dump(map_it, "map_it.pkl")
 	return map_it
 
-
 def das_average(die_liste):
 	return sum(die_liste) / float(len(die_liste))
 
@@ -190,10 +189,7 @@ def make_resulting_dictionary(temp_dict, neu_zeit):
 	return final_dict
 
 if __name__ == "__main__":
-
-
 	nl = please_work("Email_Entity_Mapping.pkl")
-	#print (nl)
 	msgID_sender_receiver = fix_the_goddam_format(nl)
 	#print (msgID_sender_receiver)
 	#hard_prob = joblib.load("Formal-Informal/formal_out.pkl")
@@ -203,7 +199,6 @@ if __name__ == "__main__":
 	#msgID_sender_receiver = joblib.load("msgID_sender_receiver.pkl")
 	#print ("length of msgID_sender_receiver: ", len(msgID_sender_receiver))
 
-	#raise Exception('EEEERRRRMAGERRRRD')
 	email_labels = joblib.load("map_it.pkl")
 
 	print ("loading email labels ... ")
@@ -211,9 +206,6 @@ if __name__ == "__main__":
 	print ("length of email_labels: ", len(email_labels))
 	email_labels = email_labels[0:176000]
 	print ("sentiment emailID: ", email_labels[175999])
-	#for i in range(len(email_labels)):
-	#	print (email_labels[i])
-	#raise Exception("STOP")
 
 	print ("loading soft formal probabilities ... ")
 	soft_formal_probabilities = joblib.load("Formal-Informal/formal_proba.pkl")
@@ -263,33 +255,10 @@ if __name__ == "__main__":
 	joblib.dump(final_dictionary, "final_dictionary.pkl")
 
 
-	raise Exception('EEEERRRRMAGERRRRD')
 
 
-"""
-          _____                    _____                    _____          
-         /\    \                  /\    \                  /\    \         
-        /::\    \                /::\    \                /::\    \        
-       /::::\    \              /::::\    \              /::::\    \       
-      /::::::\    \            /::::::\    \            /::::::\    \      
-     /:::/\:::\    \          /:::/\:::\    \          /:::/\:::\    \     
-    /:::/__\:::\    \        /:::/  \:::\    \        /:::/__\:::\    \    
-   /::::\   \:::\    \      /:::/    \:::\    \      /::::\   \:::\    \   
-  /::::::\   \:::\    \    /:::/    / \:::\    \    /::::::\   \:::\    \  
- /:::/\:::\   \:::\    \  /:::/    /   \:::\ ___\  /:::/\:::\   \:::\    \ 
-/:::/  \:::\   \:::\____\/:::/____/     \:::|    |/:::/  \:::\   \:::\____\
-\::/    \:::\  /:::/    /\:::\    \     /:::|____|\::/    \:::\  /:::/    /
- \/____/ \:::\/:::/    /  \:::\    \   /:::/    /  \/____/ \:::\/:::/    / 
-          \::::::/    /    \:::\    \ /:::/    /            \::::::/    /  
-           \::::/    /      \:::\    /:::/    /              \::::/    /   
-           /:::/    /        \:::\  /:::/    /               /:::/    /    
-          /:::/    /          \:::\/:::/    /               /:::/    /     
-         /:::/    /            \::::::/    /               /:::/    /      
-        /:::/    /              \::::/    /               /:::/    /       
-        \::/    /                \::/____/                \::/    /        
-         \/____/                  ~~                       \/____/         
-                                                                           
-"""
+
+
 
 
 

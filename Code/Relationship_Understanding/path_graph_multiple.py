@@ -23,29 +23,6 @@ def make_temp_dictionary(old_dictionary, max):
 	return temp_dict
 
 def make_json_dictionary(old_dictionary):
-	#### SHIT CODE
-	"""
-	verlanderlich = {}
-	count = 1
-	verlanderlich["nodes"] = []
-	verlanderlich["edges"] = []
-	for key, value in temp_dict.items():
-		cccc = 0
-		for sub_dictionary in verlanderlich["nodes"]:
-			if key.split()[0] in sub_dictionary["caption"] and not key.split()[1] in sub_dictionary["caption"]:
-				some_id = sub_dictionary['id']
-				print(some_id)
-				verlanderlich["nodes"].append({"id": 's'+str(count), "caption": key.split()[1], "role": "person", "root": False})
-				cccc += 1
-
-			elif key.split()[1] in sub_dictionary["caption"] and not key.split()[0] in sub_dictionary["caption"]:
-				verlanderlich["nodes"].append({"id": 's'+str(count), "caption": key.split()[0], "role": "person", "root": False})
-
-		verlanderlich["nodes"].append({"id": 's'+str(count), "caption": key.split()[0], "role": "person", "root": False})
-		count += 1
-		verlanderlich["nodes"].append({"id": 's'+str(count), "caption": key.split()[1], "role": "person", "root": False})
-		verlanderlich["edges"].append({"source": 's'+str(count-1), "target": 's'+str(count), "load": value})
-	"""
 	verlanderlich = {}
 	der_knoten_liste = []
 	der_kanten_liste = []
@@ -90,53 +67,23 @@ def make_json_dictionary(old_dictionary):
 	return verlanderlich 
 		
 
-
-
-
 if __name__ == "__main__":
 
 	final_dictionary = pickle.load( open( "final_dictionary.pkl", "rb" ) )
-	#print (final_dictionary)
 
 	only_heuristics = extract_only_heuristic(final_dictionary)
 	temp_dict = make_temp_dictionary(only_heuristics, 10)
 	das_ergebnis = make_json_dictionary(temp_dict)
-
-	print (das_ergebnis)
 	joblib.dump(das_ergebnis, "das_ergebnis.pkl", protocol=2)
-
-	raise Exception("STOP")
 
 	final_dict = json.dumps(verlanderlich)
 	final_json = json.loads(final_dict)
 
-	#print (final_json)
 
 	with open('final_json.json', 'w') as fp:
 	    json.dump(final_json, fp)
 
 	with open('final_json.json') as f:
 	    data = json.load(f)
-
-	#print (data)
-
-
-
-
-
-	"""
-	with open('final_json.json', 'r+') as f:
-	    data = json.load(f)
-	    data['id'] = 134 # <--- add `id` value.
-	    f.seek(0)        # <--- should reset file position to the beginning.
-	    json.dump(data, f, indent=4)
-	    f.truncate()
-	print (f)
-	"""
-
-
-
-
-
 
 
